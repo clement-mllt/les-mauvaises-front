@@ -1,0 +1,15 @@
+.strokeReset {
+  opacity: 1;
+  stroke-dashoffset: 0.001;
+  stroke-dasharray: 0px, 999999px;
+}
+
+.mask {
+  mask-type: alpha;
+}
+
+#lineLogo {
+  position: absolute;
+  width: 120%;
+  left: -10%;
+}

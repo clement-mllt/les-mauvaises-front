@@ -1,0 +1,25 @@
+@use "../variables" as *;
+
+.yellow {
+  fill: $yellow;
+}
+
+.burgerDraw {
+  stroke: $pink;
+  stroke-dashoffset: 0;
+  stroke-dasharray: none;
+  opacity: 1;
+}
+
+.strokeReset {
+  opacity: 1;
+  stroke-dashoffset: 0.001;
+  stroke-dasharray: 0px, 999999px;
+}
+
+.mask {
+  mask-type: alpha;
+}
+#logo {
+  position: relative;
+}

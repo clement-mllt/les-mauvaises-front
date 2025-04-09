@@ -1,0 +1,22 @@
+@use "../variables" as *;
+
+.yellow {
+  .background {
+    fill: $yellow;
+  }
+  .currentFill {
+    fill: black;
+  }
+  .stroke {
+    stroke-width: 0;
+  }
+}
+
+.purple {
+}
+
+.pink {
+}
+
+.black {
+}
