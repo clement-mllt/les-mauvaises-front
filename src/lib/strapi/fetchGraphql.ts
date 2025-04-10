@@ -1,6 +1,6 @@
 const GRAPHQL_ENDPOINT = process.env.NEXT_PUBLIC_STRAPI_API_URL
   ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`
-  : "http://localhost:1337/graphql"; // Fallback en local
+  : "http://127.0.0.1:1337/graphql"; // Fallback en local
 
 const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN; // Token d'authentification
 
@@ -15,7 +15,6 @@ export async function fetchGraphQL<T>(
   variables: Record<string, any> = {}
 ): Promise<T | null> {
   try {
-    // (query);
 
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
@@ -42,15 +41,15 @@ export async function fetchGraphQL<T>(
 
     const json = await res.json();
 
-    // console.log("🛰️ Requête envoyée à Strapi :", {
-    //   query,
-    //   variables,
-    //   endpoint: GRAPHQL_ENDPOINT,
-    //   headers,
-    // });
+    console.log("🛰️ Requête envoyée à Strapi :", {
+      query,
+      variables,
+      endpoint: GRAPHQL_ENDPOINT,
+      headers,
+    });
 
-    // const bodyPayload = JSON.stringify({query, variables});
-    // console.log("📦 Body JSON envoyé :", bodyPayload);
+    const bodyPayload = JSON.stringify({query, variables});
+    console.log("📦 Body JSON envoyé :", bodyPayload);
 
     if (json.errors) {
       console.error("GraphQL Errors:", json.errors);

@@ -1,0 +1,131 @@
+@use "../variables" as *;
+
+.homepage {
+    height: auto;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+
+    .headerVideoContainer {
+
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+        margin-top: 5%;
+
+
+        video {
+            width: auto;
+            height: 90vh;
+            object-fit: cover;
+        }
+    }
+
+    .homeCleinDoeil {
+        background-color: $grey;
+        border: 2px solid red;
+        height: 150vh;
+        width: 100vw;
+        display: flex;
+        justify-content: top;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+
+        .content {
+            height: 100vh;
+            width: 100%;
+            background-color: $yellow;
+        }
+
+    }
+
+    .homeCuriosity {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: $grey;
+        border: 2px solid blue;
+        color: white;
+
+        .texteCuriosity {
+
+            width: 100vw;
+            text-align: center;
+            line-height: 140px;
+
+            .title {
+                font-size: calc(9000vw / 1018);
+            }
+
+            .subTitle {
+                font-size: (5000vw / 1018);
+            }
+            
+            .text {
+                font-size: calc(2000vw / 1018);
+            }
+        }
+
+        .iconesCuriosity {
+            display: flex;
+            justify-content: center;
+            gap: 10%;
+            width: 100vw;
+            img {
+                width: 150px;
+            }
+        }
+    }
+
+    .HomeMotsCroise {
+        height: 230vh;
+        width: 100vw;
+        display: flex;
+        justify-content: top;
+        align-items: top;
+        flex-direction: row;
+        background-color: $grey;
+        border: 2px solid green;
+        color: white;
+
+        .texteMotsCroise {
+            width: 45%;
+            text-align: center;
+            border: 2px solid red;
+            .title1 {
+                font-size: calc(6000vw / 1018);
+            }
+
+            .title2 {
+                font-size: (12000vw / 1018);
+            }
+            
+            .title3 {
+                font-size: calc(5000vw / 1018);
+            }
+
+            .title4 {
+                font-size: calc(6500vw / 1018);
+            }
+        }
+    
+        .sectionMotCroise {
+            width: 55%;
+            border: 2px solid blue;
+
+            .motCroise {
+
+            }
+        }
+       
+    }
+
+
+}

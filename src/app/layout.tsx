@@ -1,5 +1,6 @@
 // src/app/layout.tsx
 import "./styles/globals.scss";
+import style from "./styles/components/Layout.module.scss";
 import Navbar from "../components/Navbar/Navbar.server";
 import Footer from "../components/Footer/Footer.server";
 import CustomHead from "../components/Seo/CustomHead";
