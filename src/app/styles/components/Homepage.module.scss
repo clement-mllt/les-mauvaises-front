@@ -85,31 +85,43 @@
     }
 
     .HomeMotsCroise {
-        height: 100vh;
+        height: 230vh;
         width: 100vw;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+        justify-content: top;
+        align-items: top;
+        flex-direction: row;
         background-color: $grey;
         border: 2px solid green;
         color: white;
 
         .texteMotsCroise {
-            width: 100vw;
+            width: 45%;
             text-align: center;
-            line-height: 140px;
-
-            .title {
-                font-size: calc(9000vw / 1018);
+            border: 2px solid red;
+            .title1 {
+                font-size: calc(6000vw / 1018);
             }
 
-            .subTitle {
-                font-size: (5000vw / 1018);
+            .title2 {
+                font-size: (12000vw / 1018);
             }
             
-            .text {
-                font-size: calc(2000vw / 1018);
+            .title3 {
+                font-size: calc(5000vw / 1018);
+            }
+
+            .title4 {
+                font-size: calc(6500vw / 1018);
+            }
+        }
+    
+        .sectionMotCroise {
+            width: 55%;
+            border: 2px solid blue;
+
+            .motCroise {
+
             }
         }
        
