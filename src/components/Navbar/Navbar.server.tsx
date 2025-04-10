@@ -20,7 +20,5 @@ export default async function Navbar() {
 
   const menuItems = data?.menus[0].Menu_connection.nodes;
 
-  console.log(menuItems);
-
   return <NavbarClient menuItems={menuItems} />;
 }

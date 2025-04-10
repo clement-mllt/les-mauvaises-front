@@ -17,6 +17,7 @@ const componentMapping: Record<
 
 export default async function Page({params}: {params: {slug: string}}) {
   const {slug} = params;
+  
 
   // Récupérer les données depuis Strapi pour le slug donné
   const pageData = await fetchPageContent(slug);
