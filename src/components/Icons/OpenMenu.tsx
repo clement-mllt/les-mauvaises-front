@@ -21,7 +21,7 @@ export default function OpenMenu({
         attr: {
           width: window.innerWidth,
           height: menuDimensions?.height ?? 700,
-          viewBox: `0 0 ${window.innerWidth} ${menuDimensions?.height}`,
+          viewBox: `0 0 ${window.innerWidth} ${menuDimensions?.height || 700}`,
         },
       });
     }

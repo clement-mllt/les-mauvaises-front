@@ -16,7 +16,9 @@ const GET_PAGE_WITH_SLUG = `
   }
 `;
 interface PageResponse {
-  pages: {Title: string}[];
+  pages: {
+    SEO: any;Title: string
+}[];
 }
 
 export async function fetchPageContent(slug: string) {

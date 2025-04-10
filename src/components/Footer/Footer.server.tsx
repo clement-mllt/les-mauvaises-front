@@ -1,6 +1,6 @@
 // src/components/Navbar.server.tsx
 import {fetchGraphQL} from "@/lib/strapi/fetchGraphql";
-import NavbarClient from "./Navbar.client";
+import FooterClient from "./Footer.client";
 
 const LIST_MENU_ITEMS = `
   query ListMenuItems {
@@ -15,10 +15,10 @@ const LIST_MENU_ITEMS = `
   }
 `;
 
-export default async function Navbar() {
+export default async function Footer() {
   const data = await fetchGraphQL(LIST_MENU_ITEMS);
 
-  const menuItems = data?.menus[0].Menu_connection.nodes;
+  const menuItems = data?.menus[1].Menu_connection.nodes;
 
-  return <NavbarClient menuItems={menuItems} />;
+  return <FooterClient menuItems={menuItems} />;
 }

@@ -6,12 +6,15 @@ import {Metadata} from "next";
 export async function generateMetadata({
   params,
 }: {
-  params: {slug: string};
+  params: {slug: string} | Promise<{slug: string}>;
 }): Promise<Metadata> {
-  const {slug} = params;
+  // Attendre que params soit résolu
+  const {slug} = await params;
+
+  // Récupérer le domaine depuis une variable d'environnement ou utiliser une valeur par défaut
+  const siteUrl = process.env.NEXTAUTH_URL || "https://les-mauvaises.fr";
 
   // Récupérer les données spécifiques à la page en fonction du slug
-  const siteUrl = process.env.NEXTAUTH_URL || "https://les-mauvaises.fr";
   const pageData = await fetchPageContent(slug);
 
   if (!pageData) {
@@ -68,12 +71,16 @@ const componentMapping: Record<
   string,
   React.ComponentType<{data: {Title: string}}>
 > = {
-  homepage: Homepage,
-  contact: Contact,
+  homepage: Homepage as React.ComponentType<{data: {Title: string}}>,
+  contact: Contact as React.ComponentType<{data: {Title: string}}>,
 };
-
-export default async function Page({params}: {params: {slug: string}}) {
-  const {slug} = params;
+export default async function Page({
+  params,
+}: {
+  params: {slug: string} | Promise<{slug: string}>;
+}) {
+  // Attendre que params soit résolu
+  const {slug} = await params;
 
   // Récupérer les données depuis Strapi pour le slug donné
   const pageData = await fetchPageContent(slug);
