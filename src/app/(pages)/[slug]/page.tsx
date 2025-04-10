@@ -1,7 +1,64 @@
 // src/app/[slug]/page.tsx
 import {fetchPageContent} from "@/lib/strapi/page";
+import {Metadata} from "next";
 
-// Importer les composants spécifiques
+// Exporter la fonction generateMetadata pour générer des métadonnées dynamiques
+export async function generateMetadata({
+  params,
+}: {
+  params: {slug: string};
+}): Promise<Metadata> {
+  const {slug} = params;
+
+  // Récupérer les données spécifiques à la page en fonction du slug
+  const siteUrl = process.env.NEXTAUTH_URL || "https://les-mauvaises.fr";
+  const pageData = await fetchPageContent(slug);
+
+  if (!pageData) {
+    return {
+      title: "Page introuvable",
+      description: "La page demandée n'existe pas.",
+    };
+  }
+
+  // Construire l'objet de métadonnées en se basant sur les données récupérées
+  return {
+    title: pageData.SEO.Title || "Agence Les Mauvaises",
+    description:
+      pageData.SEO.Description[0].children[0].text ||
+      "Description par défaut de la page.",
+    alternates: {
+      canonical: `${siteUrl}/${slug}`,
+    },
+    openGraph: {
+      title: pageData.SEO.Title || "Agence Les Mauvaises",
+      description:
+        pageData.SEO.Description[0].children[0].text ||
+        "Description par défaut de la page.",
+      url: `${siteUrl}/${slug}`,
+      siteName: "AGENCE LES MAUVAISES",
+      images: [
+        {
+          url: pageData.SEO.CoverImage.url,
+          width: 1920,
+          height: 1080,
+          alt: pageData.SEO.Title || "Agence Les Mauvaises",
+        },
+      ],
+      locale: "fr_FR",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageData.SEO.Title || "Agence Les Mauvaises",
+      description:
+        pageData.SEO.Description[0].children[0].text ||
+        "Description par défaut de la page.",
+    },
+  };
+}
+
+// Importer vos composants spécifiques
 import Homepage from "./pages/Homepage";
 import Contact from "./pages/Contact";
 import DefaultPage from "@/app/not-found";
