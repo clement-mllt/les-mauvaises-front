@@ -5,11 +5,20 @@ const GET_PAGE_WITH_SLUG = `
   query GetPageWithSlug($filters: PageFiltersInput) {
     pages(filters: $filters) {
       Title
+      SEO {
+        CoverImage {
+          url
+        }
+        Description
+        Title
+      }
     }
   }
 `;
 interface PageResponse {
-  pages: {Title: string}[];
+  pages: {
+    SEO: any;Title: string
+}[];
 }
 
 export async function fetchPageContent(slug: string) {
