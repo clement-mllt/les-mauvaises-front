@@ -5,6 +5,13 @@ const GET_PAGE_WITH_SLUG = `
   query GetPageWithSlug($filters: PageFiltersInput) {
     pages(filters: $filters) {
       Title
+      SEO {
+        CoverImage {
+          url
+        }
+        Description
+        Title
+      }
     }
   }
 `;
