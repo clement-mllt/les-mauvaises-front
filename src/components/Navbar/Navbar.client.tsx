@@ -6,10 +6,12 @@ import Favicon from "@/components/Icons/Favicon";
 import Logo from "@/components/Icons/Logo";
 import LineLogo from "@/components/Icons/LineLogo";
 import OpenMenu from "@/components/Icons/OpenMenu";
+import BurgerMorph from "@/components/Icons/BurgerMorph";
 import gsap from "gsap";
 import {DrawSVGPlugin} from "gsap/DrawSVGPlugin";
 import {SplitText} from "gsap/SplitText";
-import {MadeSoulmaze, LesMauvaises} from "@/utils/fonts";
+import {MadeSoulmaze, LesMauvaises, Quicksand} from "@/utils/fonts";
+import {switchColor} from "@/utils/animationHandler";
 
 gsap.registerPlugin(SplitText, DrawSVGPlugin);
 
@@ -55,6 +57,41 @@ export default function NavbarClient({menuItems}: NavbarClientProps) {
         resizeObserver.disconnect();
       };
     }
+  }, []);
+
+  useEffect(() => {
+    const Favicon = faviconRef?.current;
+
+    const Logo = logoRef?.current?.children[0].childNodes[0];
+    const LogoPath = (Logo as Element)?.querySelectorAll("path");
+    const LineLogo = logoRef?.current?.children[0].childNodes[1];
+    const LineLogoPath = (LineLogo as Element)?.querySelectorAll("path");
+    // Par exemple, quand on clique sur le bouton burger, on déclenche switchColor.
+    // Le ref faviconRef va nous donner l'élément icône dont on a besoin.
+    const handleClick = () => {
+      if (Favicon) {
+        // La fonction switchColor lira l'index actif dans le localStorage et utilisera le tableau global
+        switchColor(
+          Favicon,
+          {
+            logoElement: Logo, // Adjusted to use a valid type
+            logoPathElement: LogoPath,
+            lineLogoElement: LineLogo,
+            lineLogoPathElement: LineLogoPath,
+          },
+          true
+        );
+      }
+    };
+
+    if (faviconRef.current) {
+      faviconRef.current.addEventListener("click", handleClick);
+    }
+    return () => {
+      if (faviconRef.current) {
+        faviconRef.current.removeEventListener("click", handleClick);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -334,6 +371,7 @@ export default function NavbarClient({menuItems}: NavbarClientProps) {
             id={styles.openBurger}
             className={styles.invisibleButton}
           ></div>
+          <BurgerMorph />
           <div className={styles.circle}>
             <div></div>
             <div></div>
@@ -360,13 +398,29 @@ export default function NavbarClient({menuItems}: NavbarClientProps) {
           </div>
           <div className={styles.social}>
             <div>
-              <span></span>
-              <Link href="https://www.google.fr/maps/place/55+Bd+du+Havre,+95220+Herblay-sur-Seine/@49.0014912,2.1806569,3a,60y,227.94h,102.81t/data=!3m6!1e1!3m4!1sUhiUQDc-3A18Tbg9pbpJfQ!2e0!7i16384!8i8192!4m6!3m5!1s0x47e660bf682cae17:0x50a3e9b821244533!8m2!3d49.0013916!4d2.1804966!16s%2Fg%2F11c5mf1zm7?coh=205409&entry=ttu&g_ep=EgoyMDI0MTAwMi4xIKXMDSoASAFQAw%3D%3D">
+              <span className={`${styles.textTrash} ${LesMauvaises.className}`}>
+                Viens nous dire bonjour
+              </span>
+              <Link
+                className={`${styles.linkAdresse} ${Quicksand.className}`}
+                href="https://www.google.fr/maps/place/55+Bd+du+Havre,+95220+Herblay-sur-Seine/@49.0014912,2.1806569,3a,60y,227.94h,102.81t/data=!3m6!1e1!3m4!1sUhiUQDc-3A18Tbg9pbpJfQ!2e0!7i16384!8i8192!4m6!3m5!1s0x47e660bf682cae17:0x50a3e9b821244533!8m2!3d49.0013916!4d2.1804966!16s%2Fg%2F11c5mf1zm7?coh=205409&entry=ttu&g_ep=EgoyMDI0MTAwMi4xIKXMDSoASAFQAw%3D%3D"
+              >
                 55 Rue du Havre, 95220, Herblay
               </Link>
-              <Link href="tel:0961230164">09 61 23 01 64</Link>
+              <Link
+                className={`${styles.linkTel} ${Quicksand.className}`}
+                href="tel:0961230164"
+              >
+                09 61 23 01 64
+              </Link>
             </div>
-            <div></div>
+            <div className={Quicksand.className}>
+              <p>Instagram</p>
+              <p>Behance</p>
+              <p>Pinterest</p>
+              <p>Linkedin</p>
+              <p>Contact</p>
+            </div>
           </div>
         </div>
         <div ref={backOpenRef} className={styles.backOpen}>

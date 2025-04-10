@@ -4,11 +4,19 @@
   fill: $yellow;
 }
 
+.pink {
+  fill: $pink;
+}
+
 .burgerDraw {
   stroke: $pink;
   stroke-dashoffset: 0;
   stroke-dasharray: none;
   opacity: 1;
+}
+.morphElement {
+  position: absolute;
+  z-index: 11;
 }
 
 .strokeReset {
