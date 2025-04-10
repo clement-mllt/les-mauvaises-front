@@ -13,13 +13,15 @@ export const ScrollPinSections = () => {
 
     sections.forEach((section) => {
       ScrollTrigger.create({
-        trigger: section,
+        trigger: section as HTMLElement,
         start: "top top",
-        end: "bottom+=1900 top",
+        end: "bottom+=500px top",
         pin: true,
-        pinSpacing: false,
+        markers: true,
       });
     });
+
+    ScrollTrigger.refresh();
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());

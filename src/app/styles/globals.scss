@@ -7,9 +7,10 @@
 body,
 html,
 main {
-  overflow-x: hidden;
+  // overflow-x: hidden;
   background-color: $grey;
-  height: 100vh;
+  height: auto;
+  
   ::-webkit-scrollbar {
     width: 0px;
   }

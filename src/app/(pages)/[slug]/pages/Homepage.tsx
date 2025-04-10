@@ -1,5 +1,6 @@
 // src/components/pages/Homepage.tsx
 import React from "react";
+import '@/app/styles/components/Homepage.module.scss';
 import { fetchGraphQL } from "@/lib/strapi/fetchGraphql";
 import { PageResponse } from "@/lib/strapi/types";
 
@@ -27,7 +28,6 @@ const GET_PAGE_WITH_SLUG = `
       }
     }
   `;
-
 
 
 export default async function Homepage() {
