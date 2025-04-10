@@ -20,7 +20,5 @@ export default async function Footer() {
 
   const menuItems = data?.menus[1].Menu_connection.nodes;
 
-  console.log(menuItems);
-
   return <FooterClient menuItems={menuItems} />;
 }

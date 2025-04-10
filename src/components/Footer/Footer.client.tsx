@@ -38,7 +38,6 @@ export default function FooterClient({menuItems}: FooterClientProps) {
         "path"
       ) as NodeListOf<SVGPathElement>;
 
-    console.log(faviconElement);
 
     updateChosenColorsForElements(
       [faviconElement as unknown as HTMLElement],
@@ -92,16 +91,16 @@ export default function FooterClient({menuItems}: FooterClientProps) {
               <div>
                 <input
                   className={Quicksand.className}
-                  placeholder="Adresse Mail"
-                  type="email"
-                  name="email"
+                  placeholder="Prénom"
+                  type="text"
+                  name="name"
                 />
                 <div className={styles.separator}></div>
                 <input
                   className={Quicksand.className}
-                  placeholder="Prénom"
-                  type="text"
-                  name="name"
+                  placeholder="Adresse Mail"
+                  type="email"
+                  name="email"
                 />
               </div>
               <button type="submit">Envoyer</button>

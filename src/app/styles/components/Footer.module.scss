@@ -11,7 +11,7 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    padding: 60px;
+    padding: 70px;
     .containerLogo {
       position: relative;
       width: 30%;
@@ -89,7 +89,6 @@
               all: unset;
               font-family: Quicksand, Quicksand Fallback;
               color: rgba($color: white, $alpha: 0.4);
-              background-color: #ffffff38;
               width: calc(12000vw / 1018);
               padding: 10px;
               border-radius: 3px;
