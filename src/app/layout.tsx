@@ -1,6 +1,7 @@
 // src/app/layout.tsx
 import "./styles/globals.scss";
 import Navbar from "../components/Navbar/Navbar.server";
+import Footer from "../components/Footer/Footer.server";
 import CustomHead from "../components/Seo/CustomHead";
 import StructuredData from "../components/Seo/StructuredData";
 
@@ -63,6 +64,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body>
         <Navbar />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

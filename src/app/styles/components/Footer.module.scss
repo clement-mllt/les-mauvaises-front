@@ -1,0 +1,150 @@
+// src/components/Navbar/Navbar.module.scss
+@use "../variables" as *;
+
+.footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  background-color: $grey;
+  .containerTop {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 60px;
+    .containerLogo {
+      position: relative;
+      width: 30%;
+      height: fit-content;
+      svg {
+        width: 50%;
+        transform: rotate(-25deg);
+      }
+    }
+    .containerSocial {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      justify-content: flex-start;
+      > div {
+        a {
+          color: white;
+          font-size: calc(4300vw / 1018);
+          line-height: calc(4500vw / 1018);
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  .containerBottom {
+    position: relative;
+    display: flex;
+    height: fit-content;
+    flex-direction: column;
+    .containerNewsletter {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      .textContent {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        padding: 0 70px;
+        > span {
+          font-size: calc(4000vw / 1018);
+          line-height: calc(3700vw / 1018);
+          font-weight: 300;
+          color: white;
+        }
+        p {
+          font-size: calc(1200vw / 1018);
+          font-weight: 300;
+          color: white;
+          opacity: 0.5;
+        }
+      }
+      .formNewsletter {
+        position: relative;
+        border-top: 1px solid #ffffff1a;
+        border-bottom: 1px solid #ffffff1a;
+        padding: 10px 70px;
+        height: fit-content;
+        form {
+          position: relative;
+          height: fit-content;
+          display: flex;
+          justify-content: space-between;
+          .separator {
+            position: relative;
+            width: 1px;
+            height: auto;
+            background-color: #ffffff1a;
+          }
+          > div {
+            display: flex;
+            gap: 10px;
+            input {
+              all: unset;
+              font-family: Quicksand, Quicksand Fallback;
+              color: rgba($color: white, $alpha: 0.4);
+              background-color: #ffffff38;
+              width: calc(12000vw / 1018);
+              padding: 10px;
+              border-radius: 3px;
+
+              &::placeholder {
+                font-size: calc(1300vw / 1018);
+                font-weight: 300;
+                font-style: italic;
+              }
+            }
+          }
+          button {
+            all: unset;
+            color: white;
+            font-size: calc(1500vw / 1018);
+            text-transform: uppercase;
+            font-family: MadeSoulmaze, MadeSoulmaze Fallback;
+          }
+        }
+      }
+    }
+    .containerCredentials {
+      position: relative;
+      padding: 10px 70px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .containerCopyright {
+        p {
+          text-align: center;
+          color: #ffffff;
+          font-size: calc(700vw / 1018);
+          font-weight: 300;
+          text-transform: uppercase;
+        }
+      }
+      .containerLegal {
+        position: relative;
+        ul {
+          position: relative;
+          display: flex;
+          gap: 20px;
+          li {
+            list-style: none;
+            a {
+              text-align: center;
+              color: #ffffff;
+              font-size: calc(700vw / 1018);
+              font-weight: 300;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+    }
+  }
+}
