@@ -46,6 +46,7 @@
     .burger {
       position: relative;
       background-color: $yellow;
+      border: $greyLight 0.5px solid;
       border-radius: 50%;
       .invisibleButton {
         position: absolute;
@@ -55,6 +56,10 @@
         border-radius: 50%;
         width: 50px;
         height: 50px;
+      }
+      .circleModel {
+        position: absolute;
+        z-index: 11;
       }
       .circle {
         position: relative;
@@ -93,7 +98,7 @@
       top: -100vh;
       z-index: 200;
       width: 100%;
-      background-color: transparent;
+      background: transparent;
       height: fit-content;
       padding: 150px 50px;
       display: flex;

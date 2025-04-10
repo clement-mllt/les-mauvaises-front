@@ -9,8 +9,6 @@ interface ContactProps {
 }
 
 export default function Contact({data}: ContactProps) {
-  console.log(data.Title);
-
   return (
     <div>
       <h2>{data.Title}</h2>

@@ -15,7 +15,7 @@ export async function fetchGraphQL<T>(
   variables: Record<string, any> = {}
 ): Promise<T | null> {
   try {
-    // console.log(query);
+    // (query);
 
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
