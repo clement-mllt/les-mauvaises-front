@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Explosion() {
   return (
-    <svg className="color-switch-except-fill" width="147" height="165" viewBox="0 0 147 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className="" width="147" height="165" viewBox="0 0 147 165" fill="none" xmlns="http://www.w3.org/2000/svg">
     <mask id="mask0_4399_66509" maskUnits="userSpaceOnUse" x="-2" y="-2" width="152" height="170">
     <path d="M16 43L32.5 47L36.5 42L30.5 14.5L50.5 39L54.5 40L57 2L66 36.5H74.5L85.5 0L89.5 38L96 39L119.5 12L108 54L137.5 40L112.5 66.5L145 70L122.5 78.5V90.5L146.5 107.5M0 96.5L25 101.5L29 110L10 123L36.5 118V135L30.5 155L49 135L53 133.5V165L68.5 130.5L77 165L84 127.5L99.5 150L95 123.5L121.5 145.5" stroke="black" strokeWidth="11"/>
     </mask>

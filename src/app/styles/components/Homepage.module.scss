@@ -26,19 +26,97 @@
 
     .homeCleinDoeil {
         background-color: $grey;
-        border: 2px solid red;
-        height: 190vh;
+        height: 280vh;
         width: 100vw;
         display: flex;
         justify-content: top;
         align-items: center;
         flex-direction: column;
-        color: white;
+        overflow: hidden;
 
         .content {
             height: 100vh;
-            width: 100%;
+            width: 100vw;
             background-color: $yellow;
+            overflow: hidden;
+
+            .papers {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                z-index: 2;
+
+                .paper1 {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+
+                .paper2 {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    transform: rotate(180deg);
+                }
+            }
+
+            .cleinOeil {
+                position: absolute;
+                top: 200;
+                right: 40;
+                transform: rotate(-60deg);
+                z-index: 1;
+                mix-blend-mode: darken;
+
+                .oeil1 {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    filter: rgb(255, 0, 0);
+                }
+
+                .oeil2 {
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    filter: rgb(255, 0, 0);
+                }
+            }
+
+            .explosion {
+                position: absolute;
+                top: 200;
+                left: 140;
+                z-index: 3;
+                opacity: 0;
+                    
+                path {
+                    stroke: $yellow;
+                    stroke-width: 6px;
+                    stroke-linecap: square;
+                }
+                
+            }
+
+            .ShortSVG {
+                position: absolute;
+                top: 200;
+                right: -40;
+                z-index: 3;
+                opacity: 0;
+            }
+
+            .longSVG {
+                border: 2px solid green;
+                width: 101vw;
+                height: 100vh;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 3;
+                mix-blend-mode: difference;
+            }
+
         }
     }
 
@@ -65,7 +143,7 @@
             .subTitle {
                 font-size: (5000vw / 1018);
             }
-            
+
             .text {
                 font-size: calc(2000vw / 1018);
             }
@@ -76,6 +154,7 @@
             justify-content: center;
             gap: 10%;
             width: 100vw;
+
             img {
                 width: 150px;
             }
@@ -99,7 +178,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;;
+            text-align: center;
+            ;
+
             .title1 {
                 font-size: calc(6000vw / 1018);
             }
@@ -107,7 +188,7 @@
             .title2 {
                 font-size: (12000vw / 1018);
             }
-            
+
             .title3 {
                 font-size: calc(5000vw / 1018);
             }
@@ -116,22 +197,22 @@
                 font-size: calc(6500vw / 1018);
             }
         }
-    
+
         .sectionMotCroise {
             height: 100vh;
             width: 55%;
             display: flex;
             justify-content: center;
             align-items: center;
-            
+
 
             .motCroise {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                padding: 2em 10em; 
-              
+                padding: 2em 10em;
+
                 .row {
                     display: flex;
                     justify-content: space-between;
@@ -139,10 +220,10 @@
                     align-items: center;
                     line-height: 4em;
                     gap: 2em;
-                    
-                  }
-                  
-                  .letter {
+
+                }
+
+                .letter {
                     display: inline-block;
                     text-align: center;
                     font-size: calc(2600vw / 1018);
@@ -150,11 +231,11 @@
                     color: white;
                     width: 100%;
                     opacity: 0;
-                  }
-                  
-                  .letter.blank {
+                }
+
+                .letter.blank {
                     text-align: center
-                  }
+                }
             }
         }
     }
@@ -176,7 +257,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: $grey;        
+        background-color: $grey;
         border: 2px solid blue;
 
         .canvaContainer {

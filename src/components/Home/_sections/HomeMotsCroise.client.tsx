@@ -73,9 +73,6 @@ export const HomeMotsCroise = () => {
     `.${style.motCroise} .${style.letter}`
     );
 
-    console.log(letters, "letters");
-    
-
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionMotCroise,
