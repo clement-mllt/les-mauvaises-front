@@ -15,9 +15,9 @@ export const ScrollPinSections = () => {
       ScrollTrigger.create({
         trigger: section as HTMLElement,
         start: "top top",
-        end: "bottom+=500px top",
+        end: "bottom top",
         pin: true,
-        markers: true,
+        // markers: true,
       });
     });
 

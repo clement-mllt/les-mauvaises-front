@@ -70,8 +70,11 @@ export const HomeMotsCroise = () => {
       `.${style.sectionMotCroise}`
     );
     const letters = gsap.utils.toArray<HTMLElement>(
-      `.${style.motCroise} .letter`
+    `.${style.motCroise} .${style.letter}`
     );
+
+    console.log(letters, "letters");
+    
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -82,8 +85,8 @@ export const HomeMotsCroise = () => {
       },
     });
 
-    tl.from(letters, {
-      opacity: 0,
+    tl.to(letters, {
+      opacity: 1,
       duration: 0.5,
       stagger: (index, target) => {
         const row = parseInt(target.getAttribute("data-row") || "0");
@@ -98,6 +101,7 @@ export const HomeMotsCroise = () => {
     blankLetters.forEach((letter, index) => {
       letter.textContent = highLightGrid[index] || "";
     });
+;
 
     tl.to(`.${style.motCroise} .blank`, {
       color: "#C62468",

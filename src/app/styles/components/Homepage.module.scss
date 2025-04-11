@@ -27,7 +27,7 @@
     .homeCleinDoeil {
         background-color: $grey;
         border: 2px solid red;
-        height: 150vh;
+        height: 190vh;
         width: 100vw;
         display: flex;
         justify-content: top;
@@ -40,7 +40,6 @@
             width: 100%;
             background-color: $yellow;
         }
-
     }
 
     .homeCuriosity {
@@ -100,7 +99,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
+            text-align: center;;
             .title1 {
                 font-size: calc(6000vw / 1018);
             }
@@ -150,19 +149,41 @@
                     font-weight: bold;
                     color: white;
                     width: 100%;
-                    
+                    opacity: 0;
                   }
                   
                   .letter.blank {
                     text-align: center
                   }
-
             }
-
-
-
         }
-       
+    }
+
+    .homeFlag {
+        height: 100vh;
+        width: 100vw;
+        background-color: $grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 2px solid red;
+    }
+
+    .HomeRestaurant {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $grey;        
+        border: 2px solid blue;
+
+        .canvaContainer {
+            height: 100%;
+            width: 100%;
+        }
+
     }
 
 

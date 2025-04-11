@@ -9,6 +9,8 @@ import { HomeCleinDoeil } from "@/components/Home/_sections/HomeCleinDoeil.clien
 import { HomeCuriosity } from "@/components/Home/_sections/HomeCuriosity.client";
 import { ScrollPinSections } from "@/components/Home/utils/ScrollPinSections";
 import { HomeMotsCroise } from "@/components/Home/_sections/HomeMotsCroise.client";
+import { HomeFlag } from "@/components/Home/_sections/HomeFlag.client";
+import { HomeRestaurant } from "@/components/Home/_sections/HomeRestaurant.client";
 
 import style from "@/app/styles/components/Homepage.module.scss";
 
@@ -48,6 +50,8 @@ export default async function Homepage() {
       <HomeCleinDoeil />
       <HomeCuriosity />
       <HomeMotsCroise />
+      <HomeFlag />
+      <HomeRestaurant />
     </section>
   );
 }
