@@ -1,6 +1,6 @@
 'use client'
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from "@/app/styles/components/Homepage.module.scss";
 import Explosion from "@/components/Icons/Explosion";
 import Favicon from "@/components/Icons/Favicon";
@@ -11,30 +11,31 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
-import { useEffect } from "react";
+import { MadeSoulmaze, LesMauvaises, Quicksand } from "@/utils/fonts";
+import TvSection from "./TvSection.client";
 
 gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin);
 
-
-export const AnimatedSection = () => {
-
-  const container = React.useRef<HTMLDivElement>(null);
-  const paper1 = React.useRef<HTMLImageElement>(null);
-  const paper2 = React.useRef<HTMLImageElement>(null);
-  const LongSvg = React.useRef<HTMLDivElement>(null);
-  const ShortSvg = React.useRef<HTMLDivElement>(null);
-  const cleinOeil = React.useRef<HTMLDivElement>(null);
-  const cleinOeil1 = React.useRef<HTMLImageElement>(null);
-  const cleinOeil2 = React.useRef<HTMLImageElement>(null);
-  const explosion = React.useRef<HTMLDivElement>(null);
+export const AnimatedSection = (data: any) => {
+  const container = useRef<HTMLDivElement>(null);
+  const paper1 = useRef<HTMLImageElement>(null);
+  const paper2 = useRef<HTMLImageElement>(null);
+  const LongSvg = useRef<HTMLDivElement>(null);
+  const ShortSvg = useRef<HTMLDivElement>(null);
+  const cleinOeil = useRef<HTMLDivElement>(null);
+  const cleinOeil1 = useRef<HTMLImageElement>(null);
+  const cleinOeil2 = useRef<HTMLImageElement>(null);
+  const explosion = useRef<HTMLDivElement>(null);
+  const tvSectionRef = useRef<HTMLDivElement>(null)
+  let isTvStart = useState(false)
 
   useEffect(() => {
     if (!LongSvg.current) return;
-  
-    const LongLinePaths = LongSvg.current.querySelectorAll("path");
-    const ExplosionPaths = explosion.current?.querySelectorAll("path");
 
-  
+    // Sélection des chemins dans le SVG LongSvg
+    const LongLinePaths = LongSvg.current.querySelectorAll("path");
+    const shortLinePaths = ShortSvg.current?.querySelectorAll("path");
+
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
@@ -43,12 +44,12 @@ export const AnimatedSection = () => {
         scrub: true,
       },
     });
-  
-    // Animation sur les papiers
+
+    // Animation des papiers
     tl.fromTo(paper1.current, { x: -600 }, { x: 0, duration: 1 })
       .fromTo(paper2.current, { x: 900 }, { x: 0, duration: 1 }, "<");
-  
-    // Effet drawSVG sur les paths de FullScreenline
+
+    // Animation drawSVG sur le FullScreenline
     tl.from(LongLinePaths, {
       drawSVG: "0%",
       duration: 8,
@@ -58,8 +59,8 @@ export const AnimatedSection = () => {
         duration: 45,
         ease: "none",
       }, "textStart");
-      
-    // Clein d'oeil apparition
+
+    // Animation d'apparition du clign d'œil
     tl.fromTo(cleinOeil.current, {
       x: 500,
       opacity: 0,
@@ -68,36 +69,89 @@ export const AnimatedSection = () => {
       opacity: 1,
       duration: 3,
       ease: "power1.inOut",
-    }, "textStart")  
-
-    // Clein doeil animation
-    tl.to(cleinOeil1.current, {
-      opacity: 0,
-      duration: 0,
-      ease: "power1.inOut",
-    }, "textStart+=10")
-
-    // ShortSVG animation
-    tl.to(ShortSvg.current, {
-      opacity: 1,
-      duration: 2,
-      ease: "power1.inOut",
     }, "textStart")
+      .to(cleinOeil1.current, {
+        opacity: 0,
+        duration: 0,
+        ease: "power1.inOut",
+      }, "textStart+=10");
 
-    tl.to(explosion.current, {
-      opacity: 1,
-      duration: 2,
-      ease: "power1.inOut",
-    }, "textStart+=0.5")
+    // Animation du ShortSVG et de l'explosion
+    tl.from(shortLinePaths, {
+      drawSVG: "0%",
+      duration: 5,
+     }, "sync+=0.3")
+     .to(shortLinePaths, {
+        drawSVG: "100%",
+        duration: 5,
+        ease: "power1.inOut",
+     }, "textStart")
+      .to(explosion.current, {
+        opacity: 1,
+        duration: 2,
+        ease: "power1.inOut",
+      }, "textStart+=0.5");
     
+    //animation de texte
+    const textContainer = container.current ? container.current.querySelector(`.${style.splitText}`) : null;
+    if (textContainer) {
+      const splitInstance = new SplitText(textContainer, {
+        type: "chars",
+        position: "relative",
+      });
+      tl.from(splitInstance.chars, {
+        duration: 0.5,
+        opacity: 0,
+        y: 20,
+        x: -30,
+        ease: "power2.out",
+        stagger: 0.5,
+      }, "textStart"); 
+    }
 
+    tl.fromTo(
+      tvSectionRef.current,
+      { y: 100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 10,
+        onStart: () => {
+          if (textContainer) {
+            gsap.to(textContainer, { mixBlendMode: "none" });
+          }
+        },
+        onComplete: () => {
+          // if (isTvStart) {
+          //   document.body.style.overflow = "hidden";
+          // }
+        }
+      },
+      "textStart+=50"
+    )
+    .to(tvSectionRef.current, {
+      scale: 2,
+      y: -300,
+      zIndex: 300
+    })
+    .to(tvSectionRef.current, {
+
+    }) 
+    
+    console.log(tvSectionRef.current?.children);
+    let test = tvSectionRef.current?.children[0]
+    if(test) {
+      console.log(test);
+    }
+    
+    
+    
 
     return () => {
       tl.kill();
       ScrollTrigger.kill();
     };
   }, []);
-  
 
   return (
     <div ref={container} className={`${style.content}`}>
@@ -122,6 +176,24 @@ export const AnimatedSection = () => {
       <div ref={LongSvg} className={`${style.longSVG}`}>
         <FullScreenline />
       </div>
+
+      <div className={`${style.splitText} ${MadeSoulmaze.className}`}>
+        <div className={`${style.splitText1}`}>
+          <span className={`${style.span1} span1`}>on</span> <span className={`${style.span1} span2`}>s'est déjà</span> <span className={`${style.span1}`}>vu</span>
+        </div>
+        <div className={`${style.splitText2}`}>
+          <span className="span4">quelque</span>
+        </div>
+        <div className={`${style.splitText3}`}>
+          <span className="span5">part</span> <span className="span6">N</span> <span className="span7">😊</span> <span className="span8">N</span>
+        </div>
+      </div>
+
+      <div ref={tvSectionRef}>
+        <TvSection data={data}/>
+      </div>
     </div>
   );
 };
+
+export default AnimatedSection;

@@ -45,9 +45,8 @@ export default async function Homepage() {
   return (
     <section className={style.homepage}>
       <ScrollPinSections />
-
       <HomeHeader data={pageData?.page?.header_video}/>
-      <HomeCleinDoeil />
+      <HomeCleinDoeil  data={pageData?.page?.header_video}/>
       <HomeCuriosity />
       <HomeMotsCroise />
       <HomeFlag />
