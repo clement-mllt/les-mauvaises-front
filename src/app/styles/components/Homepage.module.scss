@@ -26,7 +26,7 @@
 
     .homeCleinDoeil {
         background-color: $grey;
-        height: 280vh;
+        height: 600vh;
         width: 100vw;
         display: flex;
         justify-content: top;
@@ -50,12 +50,14 @@
                     position: absolute;
                     top: 0;
                     left: 0;
+                    z-index: 2;
                 }
 
                 .paper2 {
                     position: absolute;
                     top: 0;
                     right: 0;
+                    z-index: 2;
                     transform: rotate(180deg);
                 }
             }
@@ -89,13 +91,13 @@
                 left: 140;
                 z-index: 3;
                 opacity: 0;
-                    
+
                 path {
                     stroke: $yellow;
                     stroke-width: 6px;
                     stroke-linecap: square;
                 }
-                
+
             }
 
             .ShortSVG {
@@ -118,10 +120,9 @@
 
             .splitText {
                 position: absolute;
-                top: 0;
+                top: 100;
                 left: 0;
                 z-index: 3;
-                mix-blend-mode: difference;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -129,60 +130,163 @@
                 height: 100vh;
                 width: 100vw;
                 color: $yellow;
+                user-select: none;
+                mix-blend-mode:difference;
 
                 .splitText1 {
                     display: flex;
-                    text-align: center;                    
-                    
-                    .span1 {
-                        font-size: calc(9000vw / 1018) !important;
+                    align-items: flex-end;
+                    gap: 20;
+                    line-height: 1;
+                    overflow: hidden;
+
+                    >span {
+                        margin: 0;
+                        padding: 0;
+                        letter-spacing: 0;
+                        line-height: 1;
+                        display: inline-flex;
                     }
 
-                    .span2 {
-                        font-size: calc(5000vw / 1018) !important;
+                    >.span1 {
+                        font-size: calc(10000vw / 1018);
                     }
-                
-                    .span3 {
-                        font-size: calc(9000vw / 1018) !important;
+
+                    >.span2 {
+                        display: inline-block;
+                        font-size: calc(5000vw / 1018);
                     }
+
+                    >.span3 {
+                        font-size: calc(9000vw / 1018);
+                    }
+
                 }
 
+
+
                 .splitText2 {
-                    font-size: calc(5000vw / 1018);
-                    text-align: center;
-                    line-height: 140px;
+                    display: flex;
+                    align-items: flex-end;
+                    line-height: 1;
+                    overflow: hidden;
+
+                    >span {
+                        margin: 0;
+                        padding: 0;
+                        letter-spacing: 0;
+                        line-height: 1;
+                        display: inline-flex;
+                    }
+
+                    >.span4 {
+                        font-size: calc(7000vw / 1018);
+                    }
+
                 }
 
                 .splitText3 {
-                    font-size: calc(9000vw / 1018);
                     text-align: center;
-                    line-height: 140px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    justify-content: center;
+                    overflow: hidden;
+
+                    .span5 {
+                      font-size: calc(6000vw / 1018);
+                      margin: 0;
+                      padding: 0;
+                    }
+                  
+                    .WordSmiley {
+                      display: inline-flex; 
+                      align-items: flex-start;
+                      justify-content: flex-start;
+                      margin: 0;
+                      padding: 0;
+                    }
+                  
+                    .span6 {
+                      font-size: calc(10000vw / 1018);
+                      margin: 0;
+                      padding: 0;
+                    }
+                  
+                    .span7 {
+                      margin: 0;
+                      padding: 0;
+                      display: inline-block;
+                      align-items: flex-start;
+                      justify-content: flex-start;
+                      
+                      svg {
+                        display: block;    
+                        margin: 0;
+                        padding: 0;
+                        width: 180px;      
+                        height: 180px;     
+                      }
+                    }
+                  
+                    .span8 {
+                      font-size: calc(10000vw / 1018);
+                      margin: 0;
+                      padding: 0;
+                    }
+                  }
+                  
+
+                img {
+                    position: absolute;
+                    top: 50%;
+                    right: 25%;
+                    height: 100;
+                    width: 100;
+                    opacity: 0;
+                    z-index: 100;
                 }
             }
+
 
             .TvSection {
                 position: relative;
                 height: 100vh;
                 width: 100vw;
-                background-color: transparent;
                 border: 2px solid blue;
                 display: flex;
                 justify-content: center;
                 align-items: end;
-                z-index: 100;
+                z-index: 10;
+                background: transparent;
+                
+                img {
+                    position: absolute;
+                    height: 60%;
+                    width: auto;
+                    bottom: 0;
+                    z-index: 100;
+                }
 
+                .videoContainer {
+                    position: absolute;
+                    top: 48%;
+                    left: 41%;
+                    height: 21vh;
+                    width: 20vw;
+                    background-color: transparent;
+                    z-index: 115;
+                }
 
-            img {
-                position: absolute;
-                height: 50%;
-                width: 50%;
-                bottom: 0;
-                z-index: 100;
-            }
+                video {
+                    height: 100%;
+                    width: 110%;
+                }
+
             }
         }
 
-  
+
     }
 
     .homeCuriosity {
