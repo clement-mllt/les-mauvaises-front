@@ -26,7 +26,7 @@
 
     .homeCleinDoeil {
         background-color: $grey;
-        height: 600vh;
+        height: 700vh;
         width: 100vw;
         display: flex;
         justify-content: top;
@@ -74,14 +74,12 @@
                     position: absolute;
                     top: 0;
                     left: 0;
-                    filter: rgb(255, 0, 0);
                 }
 
                 .oeil2 {
                     top: 0;
                     right: 0;
                     left: 0;
-                    filter: rgb(255, 0, 0);
                 }
             }
 
@@ -131,7 +129,7 @@
                 width: 100vw;
                 color: $yellow;
                 user-select: none;
-                mix-blend-mode:difference;
+                mix-blend-mode: difference;
 
                 .splitText1 {
                     display: flex;
@@ -194,53 +192,64 @@
                     overflow: hidden;
 
                     .span5 {
-                      font-size: calc(6000vw / 1018);
-                      margin: 0;
-                      padding: 0;
-                    }
-                  
-                    .WordSmiley {
-                      display: inline-flex; 
-                      align-items: flex-start;
-                      justify-content: flex-start;
-                      margin: 0;
-                      padding: 0;
-                    }
-                  
-                    .span6 {
-                      font-size: calc(10000vw / 1018);
-                      margin: 0;
-                      padding: 0;
-                    }
-                  
-                    .span7 {
-                      margin: 0;
-                      padding: 0;
-                      display: inline-block;
-                      align-items: flex-start;
-                      justify-content: flex-start;
-                      
-                      svg {
-                        display: block;    
+                        font-size: calc(6000vw / 1018);
                         margin: 0;
                         padding: 0;
-                        width: 180px;      
-                        height: 180px;     
-                      }
+                        overflow: hidden;
                     }
-                  
-                    .span8 {
-                      font-size: calc(10000vw / 1018);
-                      margin: 0;
-                      padding: 0;
+
+                    .WordSmiley {
+                        display: flex;
+                        margin: 0;
+                        padding: 0;
+
+
+                        .span6 {
+                            display: flex;
+                            font-size: calc(10000vw / 1018);
+                            margin: 0;
+                            padding: 0;
+                            overflow: hidden;
+
+                            >div {
+                                line-height: calc(10000vw /1018);
+                            }
+                        }
+
+                        .span7 {
+                            margin: 0;
+                            padding: 0;
+                            display: flex;
+                            justify-content: flex-start;
+
+                            svg {
+                                display: block;
+                                margin: 0;
+                                padding: 0;
+                                width: 180px;
+                                height: 180px;
+                            }
+                        }
+
+                        .span8 {
+                            display: flex;
+                            font-size: calc(10000vw / 1018);
+                            margin: 0;
+                            padding: 0;
+                            overflow: hidden;
+
+                            >div {
+                                line-height: calc(10000vw /1018);
+                            }
+                        }
                     }
-                  }
-                  
+                }
+
 
                 img {
                     position: absolute;
                     top: 50%;
-                    right: 25%;
+                    right: 20%;
                     height: 100;
                     width: 100;
                     opacity: 0;
@@ -248,41 +257,43 @@
                 }
             }
 
-
-            .TvSection {
+            .containerTv {
                 position: relative;
-                height: 100vh;
-                width: 100vw;
-                border: 2px solid blue;
-                display: flex;
-                justify-content: center;
-                align-items: end;
-                z-index: 10;
-                background: transparent;
-                
-                img {
-                    position: absolute;
-                    height: 60%;
-                    width: auto;
-                    bottom: 0;
-                    z-index: 100;
-                }
 
-                .videoContainer {
-                    position: absolute;
-                    top: 48%;
-                    left: 41%;
-                    height: 21vh;
-                    width: 20vw;
-                    background-color: transparent;
-                    z-index: 115;
-                }
+                .TvSection {
+                    position: relative;
+                    height: 100vh;
+                    width: 100vw;
+                    display: flex;
+                    justify-content: center;
+                    align-items: end;
+                    z-index: 10;
+                    background: transparent;
 
-                video {
-                    height: 100%;
-                    width: 110%;
-                }
+                    img {
+                        position: absolute;
+                        height: 60%;
+                        width: auto;
+                        bottom: 0;
+                        z-index: 100;
+                    }
 
+                    .videoContainer {
+                        position: absolute;
+                        top: 48%;
+                        left: 41%;
+                        height: 21vh;
+                        width: 20vw;
+                        background-color: transparent;
+                        z-index: 115;
+                    }
+
+                    video {
+                        height: 100%;
+                        width: 110%;
+                    }
+
+                }
             }
         }
 

@@ -15,37 +15,31 @@ export default function TvSection({ data, isTvStart }: { data: any; isTvStart: b
     if (!videoElement) return;
     if (!isTvStart) return;
 
-    // Fonction de mise à jour de la position de la vidéo lors du scroll
     const handleScroll = () => {
       const scrollY = window.pageYOffset || document.documentElement.scrollTop;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      // Vérifiez qu'il y a bien un scroll possible
       const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
       console.log("scrollY:", scrollY, "maxScroll:", maxScroll, "progress:", progress);
       
       if (videoElement.duration) {
-        // Multipliez par un facteur (ici 10) pour accélérer la progression de la vidéo
-        const newTime = progress * (videoElement.duration * 2);
-        // Limiter currentTime à la durée de la vidéo pour ne pas la dépasser
+        const factor = 2;
+        const newTime = progress * (videoElement.duration * factor);
         videoElement.currentTime = Math.min(newTime, videoElement.duration);
         console.log("videoElement.currentTime:", videoElement.currentTime);
       }
     };
 
-    // Fonction appelée quand les métadonnées de la vidéo sont chargées
     const onLoadedMetadata = () => {
       videoElement.pause();
       window.addEventListener('scroll', handleScroll);
     };
 
-    // Si les métadonnées sont déjà chargées, on appelle directement la fonction
     if (videoElement.readyState >= 1) {
       onLoadedMetadata();
     } else {
       videoElement.addEventListener('loadedmetadata', onLoadedMetadata);
     }
 
-    // Nettoyage de l'écouteur lors du démontage
     return () => {
       videoElement.removeEventListener('loadedmetadata', onLoadedMetadata);
       window.removeEventListener('scroll', handleScroll);

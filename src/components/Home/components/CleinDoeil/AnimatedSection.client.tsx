@@ -53,10 +53,10 @@ export const AnimatedSection = (data: any) => {
     });
 
     // Animation des papiers
-    tl.fromTo(paper1.current, { x: -600 }, { x: 0, duration: 1 }).fromTo(
+    tl.fromTo(paper1.current, { x: -600 }, { x: 0, duration: 4 }).fromTo(
       paper2.current,
       { x: 900 },
-      { x: 0, duration: 1 },
+      { x: 0, duration: 4 },
       "<"
     );
 
@@ -197,7 +197,7 @@ export const AnimatedSection = (data: any) => {
           stroke: "none",
           duration: 4,
         },
-        "textStart+=45"
+        "textStart+=50"
       );
 
     // TL FOR TV SECTION
@@ -220,7 +220,7 @@ export const AnimatedSection = (data: any) => {
       y: -150,
       zIndex: 300,
       duration: 10,
-      onComplete: () => {
+      onEnd: () => {
         setTimeout(() => {
           setIsTvStart(true)
         }, 1500);
@@ -269,7 +269,7 @@ export const AnimatedSection = (data: any) => {
           <div>
             <span className={`${style.span5}`}>PART</span>
           </div>
-          <div className="WordSmiley">
+          <div className={`${style.WordSmiley}`}>
             <span className={`${style.span6}`}>N</span>
             <span ref={SmileySVG} className={`${style.span7}`}>
               <Smiley />
@@ -287,7 +287,7 @@ export const AnimatedSection = (data: any) => {
         />
       </div>
 
-      <div ref={tvSectionRef}>
+      <div className={style.containerTv} ref={tvSectionRef}>
         <TvSection data={data} isTvStart={isTvStart}/>
       </div>
     </div>
