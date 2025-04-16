@@ -1,14 +1,51 @@
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
+import { gsap } from "gsap";
+import { MadeSoulmaze, LesMauvaises } from "@/utils/fonts";
+import style from "@/app/styles/components/Not-found.module.scss";
+import Line404 from "@/components/Icons/Line404";
+import TicTacToe from "@/components/NotFound/TicTacToe.client"; // Assurez-vous du chemin
 
 export default function NotFoundPage() {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white px-4">
-        <h1 className="text-4xl font-bold">❌ Page non trouvée</h1>
-        <p className="mt-4 text-lg">Le message secret que vous cherchez n'existe pas.</p>
-        <Link href="/" className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
-          Retour à l'accueil
-        </Link>
+  // Déclaration des états des scores dans le parent
+  const [userScore, setUserScore] = useState(0);
+  const [botScore, setBotScore] = useState(0);
+
+  return (
+    <>
+      <div className={style.notFoundContainer}>
+        <div className={style.notFoundMessage}>
+          <div className={style.notFoundMessageText}>
+            <div className={`${style.title} ${MadeSoulmaze.className}`}>
+              PAGE INTROUVABLE
+            </div>
+            <div className={`${style.subtitle} ${LesMauvaises.className}`}>
+              <p>oh purée,
+              ça marche pô !</p>
+            </div>
+          </div>
+          <div className={style.notFoundMessageScore}>
+            <div className={`${style.notFoundMessageScorePlace} ${LesMauvaises.className}`}>
+              <div>
+                <p>toi : {userScore}</p>
+                <p>nous : {botScore}</p>
+              </div>
+              <Line404 />
+            </div>
+          </div>
+        </div>
+        <div className={style.notFoundGame}>
+          {/* Passage des états et des setters en props vers TicTacToe */}
+          <TicTacToe 
+            userScore={userScore} 
+            botScore={botScore} 
+            setUserScore={setUserScore} 
+            setBotScore={setBotScore} 
+          />
+        </div>
       </div>
-    );
-  }
-  
+    </>
+  );
+}

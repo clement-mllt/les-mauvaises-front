@@ -1,0 +1,175 @@
+@use "../variables" as *;
+
+
+.notFoundContainer {
+    background-color: $yellow;
+    color: $grey;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .notFoundMessage {
+        width: 40%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .notFoundMessageText {
+        
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            width: 100%;
+            height: 60%;
+            padding-left: 5%;
+
+            .title {
+                font-size: calc(9000vh / 1018);
+            }
+
+            .subtitle {
+                line-height: 1;
+                font-size: calc(6000vh / 1018);
+            }
+        }
+
+
+        .notFoundMessageScore {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 40%;
+            padding-left: 5%;
+
+            .notFoundMessageScorePlace {
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 5%;
+                line-height: 1;
+                width: 100%;
+                height: 100%;
+                font-size: calc(5000vh / 1018);
+
+                svg {
+                    position: absolute;
+                    bottom: calc(17000vh / 1018);
+                    left: calc(-1800vh / 1018);
+                    width: 15%;
+                    height: auto;
+                }
+            }
+        }
+
+    }
+
+
+.notFoundGame {
+    width: 60%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .ticTacToeContainer {
+      width: 600px;
+      height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      bottom: calc(9000vh / 1018);
+      right: calc(20000vh / 1018);
+      transform: scaleX(1.2);
+    }
+    
+    .ticTacToeBoard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 10px; 
+      width: 100%;
+      height: 100%;
+      transform: rotate(-5deg);
+      position: relative;
+      z-index: 10;
+      
+      .Line404 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        
+        > :nth-child(1) {
+          position: absolute;
+          top: -150px;
+          left: -250px;
+          transform: rotate(95deg);
+          width: 150%;
+        }
+        > :nth-child(2) {
+          position: absolute;
+          top: -150px;
+          left: -45px;
+          transform: rotate(95deg);
+          width: 150%;
+        }
+        > :nth-child(3) {
+          position: absolute;
+          top: -105px;
+          left: -125px;
+          transform: rotate(5deg);
+          width: 150%;
+        }
+        > :nth-child(4) {
+          position: absolute;
+          top: -300px;
+          left: -125px;
+          transform: rotate(5deg);
+          width: 150%;
+        }
+      }
+    }
+    
+    .cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: calc(28000vh / 1018); 
+      height: 180px;
+      width: 180px;
+      position: relative;
+      z-index: 15;
+    }
+    
+    .cellMark {
+      // Vous pouvez définir un style pour le X ou le O
+    }
+    
+    .gameStatus {
+      margin-top: 20px;
+      font-size: calc(11000vh / 1018);
+      position: absolute;
+      top: calc(-12000vh / 1018);
+    }
+    
+    .resetButton {
+      margin-top: 10px;
+      padding: 5px 10px;
+      font-size: 1em;
+    }
+  }
+  
+}
