@@ -16,7 +16,7 @@ import {
   setupMenuAnimation,
   updateChosenColorsForElements,
 } from "@/utils/animationMenuHandler";
-
+ 
 gsap.registerPlugin(SplitText, DrawSVGPlugin);
 
 interface MenuItem {

@@ -6,8 +6,20 @@ export const colors = ["#CBD62B", "#C72468", "#9B9AB1"];
  * Retourne 0 par défaut si aucune valeur n’est trouvée.
  */
 export function getCurrentColorIndex() {
-  const index = localStorage.getItem("currentColorIndex");
-  return index !== null ? parseInt(index, 10) : 0;
+  if (typeof window === "undefined") {
+    return 0;
+  }
+  try {
+    let index = localStorage.getItem("currentColorIndex");
+    if (index === null) {
+      localStorage.setItem("currentColorIndex", "0");
+      index = "0";
+    }
+    return parseInt(index, 10);
+  } catch (error) {
+    console.error("Error accessing localStorage:", error);
+    return 0;
+  }
 }
 
 /**

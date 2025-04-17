@@ -167,7 +167,7 @@ export function changeLineMorph(
     tl.to(
       logo.lineLogoPathElement,
       {
-        drawSVG: window.menuHandler?.isOpen ? "0% 0%" : "0% 100%",
+        drawSVG: window?.menuHandler?.isOpen ? "0% 0%" : "0% 100%",
         opacity: 1,
         duration: 1,
         stroke: colors[currentColorIndex],
@@ -180,9 +180,9 @@ export function changeLineMorph(
         {
           fill: (): string => {
             const index: number = getCurrentColorIndex();
-            (window.menuHandler?.isOpen);
+            window?.menuHandler?.isOpen;
 
-            return window.menuHandler?.isOpen
+            return window?.menuHandler?.isOpen
               ? index === 0
                 ? "white"
                 : "#28282d"
@@ -211,7 +211,7 @@ export function changeLineMorph(
     tl.set(logo.logoPathElement, {
       fill: (): string => {
         const index: number = getCurrentColorIndex();
-        return window.menuHandler?.isOpen
+        return window?.menuHandler?.isOpen
           ? index === 0
             ? "white"
             : "#28282d"
@@ -499,11 +499,13 @@ export function setupMenuAnimation(params: {
  * @param targets - Un tableau ou NodeList d’éléments HTML.
  * @param property - La propriété CSS à mettre à jour (ex. "backgroundColor", "fill", "stroke").
  * @param options - Optionnel : si options.blackWhite est true, alors si l’indice est 0, on applique "black", sinon "white".
+ * @param duration - La durée de l'animation (par défaut 0.7).
  */
 export function updateChosenColorsForElements(
   targets: HTMLElement[] | NodeListOf<HTMLElement>,
-  property: "backgroundColor" | "fill" | "stroke",
-  options?: {blackWhite?: boolean}
+  property: "backgroundColor" | "fill" | "stroke" | "color",
+  options?: {blackWhite?: boolean},
+  duration: number = 0.7
 ) {
   const currentIndex = getCurrentColorIndex();
   // Par défaut, on prend la couleur dans le tableau,
@@ -520,11 +522,13 @@ export function updateChosenColorsForElements(
   elements.forEach((element) => {
     gsap.to(element, {
       [property]: chosenColor,
-      duration: 0.7,
+      duration,
       ease: "power2.inOut",
     });
   });
 }
 
-// Extend window to allow tracking menu state
-window.menuHandler = window.menuHandler || {isOpen: false};
+// Only run in browser
+if (typeof window !== "undefined") {
+  window.menuHandler = window.menuHandler || {isOpen: false};
+}

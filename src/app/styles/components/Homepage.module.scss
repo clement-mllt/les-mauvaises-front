@@ -4,25 +4,17 @@
     height: 100%;
     width: 100vw;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: end;
+    height: 100vh;
+    width: 100%;
+    margin-top: 5%;
 
-    .headerVideoContainer {
-
-        display: flex;
-        justify-content: center;
-        height: 100vh;
-        width: 100%;
-        margin-top: 5%;
-
-
-        video {
-            width: auto;
-            height: 90vh;
-            object-fit: cover;
-        }
+    video {
+      width: auto;
+      height: 90vh;
+      object-fit: cover;
     }
+  }
 
     .homeCleinDoeil {
         background-color: $grey;
@@ -41,56 +33,56 @@
             background-color: $yellow;
         }
     }
+  }
 
-    .homeCuriosity {
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background-color: $grey;
-        color: white;
+  .homeCuriosity {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: $grey;
+    color: white;
 
-        .texteCuriosity {
+    .texteCuriosity {
+      width: 100vw;
+      text-align: center;
+      line-height: 140px;
 
-            width: 100vw;
-            text-align: center;
-            line-height: 140px;
+      .title {
+        font-size: calc(9000vw / 1018);
+      }
 
-            .title {
-                font-size: calc(9000vw / 1018);
-            }
+      .subTitle {
+        font-size: calc(5000vw / 1018);
+      }
 
-            .subTitle {
-                font-size: (5000vw / 1018);
-            }
-            
-            .text {
-                font-size: calc(2000vw / 1018);
-            }
-        }
-
-        .iconesCuriosity {
-            display: flex;
-            justify-content: center;
-            gap: 10%;
-            width: 100vw;
-            img {
-                width: 150px;
-            }
-        }
+      .text {
+        font-size: calc(2000vw / 1018);
+      }
     }
 
-    .HomeMotsCroise {
-        height: 230vh;
-        width: 100vw;
-        display: flex;
-        justify-content: top;
-        align-items: top;
-        flex-direction: row;
-        background-color: $grey;
-        color: white;
+    .iconesCuriosity {
+      display: flex;
+      justify-content: center;
+      gap: 10%;
+      width: 100vw;
+      img {
+        width: 150px;
+      }
+    }
+  }
+
+  .HomeMotsCroise {
+    height: 230vh;
+    width: 100vw;
+    display: flex;
+    justify-content: top;
+    align-items: top;
+    flex-direction: row;
+    background-color: $grey;
+    color: white;
 
         .texteMotsCroise {
             height: 100vh;
@@ -104,26 +96,13 @@
                 font-size: calc(6000vw / 1018);
             }
 
-            .title2 {
-                font-size: (12000vw / 1018);
-            }
-            
-            .title3 {
-                font-size: calc(5000vw / 1018);
-            }
+      .title2 {
+        font-size: calc(12000vw / 1018);
+      }
 
-            .title4 {
-                font-size: calc(6500vw / 1018);
-            }
-        }
-    
-        .sectionMotCroise {
-            height: 100vh;
-            width: 55%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            
+      .title3 {
+        font-size: calc(5000vw / 1018);
+      }
 
             .motCroise {
                 display: flex;
@@ -186,5 +165,10 @@
 
     }
 
-
+        .letter.blank {
+          text-align: center;
+        }
+      }
+    }
+  }
 }

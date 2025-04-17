@@ -33,20 +33,16 @@ const GET_PAGE_WITH_SLUG = `
 
 
 export default async function Homepage() {
-
   const pageData = await fetchGraphQL<PageResponse>(GET_PAGE_WITH_SLUG, {
-      documentId: "nfew7oqsfo6vumap1dk2nmdc",
-    }
-  );
+    documentId: "nfew7oqsfo6vumap1dk2nmdc",
+  });
 
-  console.log("Page Data:", pageData);
-  
 
   return (
     <section className={style.homepage}>
       <ScrollPinSections />
 
-      <HomeHeader data={pageData?.page?.header_video}/>
+      <HomeHeader data={pageData?.page?.header_video} />
       <HomeCleinDoeil />
       <HomeCuriosity />
       <HomeMotsCroise />

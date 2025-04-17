@@ -15,7 +15,6 @@ export async function fetchGraphQL<T>(
   variables: Record<string, any> = {}
 ): Promise<T | null> {
   try {
-
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
     };
@@ -41,15 +40,15 @@ export async function fetchGraphQL<T>(
 
     const json = await res.json();
 
-    console.log("🛰️ Requête envoyée à Strapi :", {
-      query,
-      variables,
-      endpoint: GRAPHQL_ENDPOINT,
-      headers,
-    });
+    // console.log("🛰️ Requête envoyée à Strapi :", {
+    //   query,
+    //   variables,
+    //   endpoint: GRAPHQL_ENDPOINT,
+    //   headers,
+    // });
 
-    const bodyPayload = JSON.stringify({query, variables});
-    console.log("📦 Body JSON envoyé :", bodyPayload);
+    // const bodyPayload = JSON.stringify({query, variables});
+    // console.log("📦 Body JSON envoyé :", bodyPayload);
 
     if (json.errors) {
       console.error("GraphQL Errors:", json.errors);
