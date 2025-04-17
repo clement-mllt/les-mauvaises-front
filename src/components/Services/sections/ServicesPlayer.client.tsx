@@ -33,7 +33,7 @@ export function ServicesPlayer() {
     place.appendChild(renderer.domElement);
 
     // Lumières
-    scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+    scene.add(new THREE.AmbientLight(0xffffff, 1));
     const dirLight = new THREE.DirectionalLight(0xffffff, 2);
     dirLight.position.set(0, 5, 0);
     scene.add(dirLight);

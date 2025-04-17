@@ -28,16 +28,16 @@
 
 
       >:nth-child(1) {
-        font-size: calc(3000vw / 1018);
+        font-size: calc(2000vw / 1018);
       }
 
       >:nth-child(2) {
-        font-size: calc(10000vw / 1018);
+        font-size: calc(8000vw / 1018);
         line-height: 1;
       }
 
       >:nth-child(3) {
-        font-size: calc(1500vw / 1018);
+        font-size: calc(1000vw / 1018);
         margin-top: calc(1500vw / 1018);
         ;
       }
@@ -58,16 +58,18 @@
     height: 100vh;
     width: 100vw;
     display: flex;
+    flex-wrap: wrap;              // autorise le retour à la ligne
     align-items: center;
     justify-content: center;
     background-color: $grey;
-
+  
     .servicesVinylesPlace {
-
-      width: 50vh;
+      flex: 0 1 calc(50% - 2rem); // deux par ligne + gap
       height: 50vh;
+      // border: 2px solid red;    // pour debug
     }
   }
+  
 
   .servicesPlayerContainer {
     display: flex;

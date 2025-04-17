@@ -21,13 +21,9 @@ export const canvasActionMap = new Map<
 >();
 
 interface LoadVinylesProps {
-  /**
-   * Sélecteur CSS pour le conteneur
-   */
+  /** Sélecteur CSS pour le conteneur */
   place: string;
-  /**
-   * URL ou chemin vers le fichier GLTF
-   */
+  /** URL ou chemin vers le fichier GLTF */
   path: string;
 }
 
@@ -45,42 +41,33 @@ export const LoadVinyles: React.FC<LoadVinylesProps> = ({ place, path }) => {
     // Scène
     const scene = new THREE.Scene();
 
-    // Caméra orthographique
+    // Caméra perspective
     const width = element.clientWidth;
     const height = element.clientHeight;
     const aspect = width / height;
-    const frustumSize = 0.35;
-    const camera = new THREE.OrthographicCamera(
-      (-frustumSize * aspect) / 2,
-      (frustumSize * aspect) / 2,
-      frustumSize / 2,
-      -frustumSize / 2,
-      0.1,
-      100
-    );
-    camera.position.set(0, 0, 0.5);
-    camera.lookAt(0, 0, 0);
+    const camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1000);
+    scene.add(camera);
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(width, height);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1;
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFShadowMap;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.setPixelRatio(window.devicePixelRatio * 2);
+    renderer.setSize(width, height);
     element.appendChild(renderer.domElement);
 
-    // Lumière ambiante
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
-    scene.add(ambientLight);
+    // Lumières
+    scene.add(new THREE.AmbientLight(0xffffff, 1.2));
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight.position.set(5, 10, 7.5);
+    scene.add(dirLight);
 
-    // AnimationMixer et horloge
     let mixer: THREE.AnimationMixer | null = null;
     const clock = new THREE.Clock();
     let frameId: number;
 
-    // Chargement GLTF
     const loader = new GLTFLoader();
     loader.load(
       path,
@@ -88,36 +75,44 @@ export const LoadVinyles: React.FC<LoadVinylesProps> = ({ place, path }) => {
         const model = gltf.scene;
         scene.add(model);
 
-        // Ajustement des textures
+        // Ajuste textures
         model.traverse((child) => {
           if ((child as THREE.Mesh).isMesh) {
             const mesh = child as THREE.Mesh;
             const mat = mesh.material as THREE.MeshStandardMaterial;
             if (mat.map) {
               mat.map.anisotropy = renderer.capabilities.getMaxAnisotropy();
-              mat.map.magFilter = THREE.LinearFilter;
-              mat.map.minFilter = THREE.LinearMipmapLinearFilter;
               mat.map.needsUpdate = true;
             }
+            mat.needsUpdate = true;
           }
         });
 
-        // Centrage du modèle
+        // Centrage et mise à l'échelle
         const box = new THREE.Box3().setFromObject(model);
-        const center = box.getCenter(new THREE.Vector3());
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const center = new THREE.Vector3();
+        box.getCenter(center);
         model.position.sub(center);
 
-        // Création du mixer et des animations
+        // Ajustement automatique de la caméra
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const fov = camera.fov * (Math.PI / 180);
+        const cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
+        // Placement sans zoom supplémentaire
+        camera.position.set(0, 0, cameraZ * 0.8);
+        camera.lookAt(0, 0, 0);
+
+        // Mixer et animations
         mixer = new THREE.AnimationMixer(model);
         const [clip0, clip1] = gltf.animations;
         const action0 = mixer.clipAction(clip0);
-        action0.play();
         let action1: THREE.AnimationAction | undefined;
-        if (clip1) {
-          action1 = mixer.clipAction(clip1);
-        }
+        
+        if (clip1) action1 = mixer.clipAction(clip1);
 
-        // Stockage des données dans la map
+        // Stockage
         const canvas = renderer.domElement as HTMLCanvasElement;
         canvasActionMap.set(canvas, {
           scene,
@@ -130,46 +125,34 @@ export const LoadVinyles: React.FC<LoadVinylesProps> = ({ place, path }) => {
           isOpen: false,
         });
 
-        // Boucle d'animation
+        // Boucle animation
         const animate = () => {
           frameId = requestAnimationFrame(animate);
-          if (mixer) {
-            const delta = clock.getDelta();
-            mixer.update(delta);
-          }
+          if (mixer) mixer.update(clock.getDelta());
           renderer.render(scene, camera);
         };
         animate();
       },
       undefined,
-      (error) => {
-        console.error("LoadVinyles: erreur de chargement GLTF", error);
-      }
+      (error) => console.error("Erreur GLTF : ", error)
     );
 
-    // Gestion du redimensionnement
+    // Resize
     const handleResize = () => {
       if (!containerRef.current) return;
       const w = containerRef.current.clientWidth;
       const h = containerRef.current.clientHeight;
-      const a = w / h;
-      renderer.setSize(w, h);
-      camera.left = (-frustumSize * a) / 2;
-      camera.right = (frustumSize * a) / 2;
-      camera.top = frustumSize / 2;
-      camera.bottom = -frustumSize / 2;
+      camera.aspect = w / h;
       camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
     };
     window.addEventListener('resize', handleResize);
 
-    // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
       if (frameId) cancelAnimationFrame(frameId);
       renderer.dispose();
-      if (containerRef.current) {
-        containerRef.current.removeChild(renderer.domElement);
-      }
+      if (containerRef.current) containerRef.current.removeChild(renderer.domElement);
       canvasActionMap.clear();
     };
   }, [place, path]);

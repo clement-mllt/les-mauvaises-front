@@ -14,7 +14,7 @@ export const ServicesHeader = () => {
         <div className={Quicksand.className}>Création de sites web, stratégie digitale et contenus percutants : on conçoit des concepts qui marquent les esprits. Spécialistes du creative content, on transforme tes idées en expériences numériques percutantes et sur-mesure. Ici, chaque projet est unique, pensé pour faire vibrer ton audience et révéler tout le potentiel de ta présence en ligne</div>
     </div>
     <div className={style.servicesHeaderImage}>
-        <Image src={"/servicesAssets/Vinyle\ def.png"} alt="services" width={350} height={500} />
+        <Image src={"/servicesAssets/Vinyle\ def.png"} alt="services" width={525} height={780} />
     </div>
 </div>
   )
