@@ -1,5 +1,6 @@
 // src/components/pages/Contact.tsx
 import React from "react";
+import {ContactContent} from "@/components/Contact/_sections/ContactContent";
 
 interface ContactProps {
   data: {
@@ -9,9 +10,5 @@ interface ContactProps {
 }
 
 export default function Contact({data}: ContactProps) {
-  return (
-    <div>
-      <h2>{data.Title}</h2>
-    </div>
-  );
+  return <ContactContent />;
 }
