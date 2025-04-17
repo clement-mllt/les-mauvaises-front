@@ -43,7 +43,7 @@ export function HomeRestaurant() {
 
     const loader = new GLTFLoader();
     loader.load(
-      "/glbModels/building4.glb",
+      "/glbModels/home/building4.glb",
       (gltf: any) => {
         const model = gltf.scene;
         scene.add(model);

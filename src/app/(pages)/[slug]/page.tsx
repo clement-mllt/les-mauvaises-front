@@ -65,6 +65,7 @@ export async function generateMetadata({
 // Importer vos composants spécifiques
 import Homepage from "./pages/Homepage";
 import Contact from "./pages/Contact";
+import Services from "./pages/Services";
 import DefaultPage from "@/app/not-found";
 
 // Définir un mapping slug => composant
@@ -74,6 +75,7 @@ const componentMapping: Record<
 > = {
   homepage: Homepage as React.ComponentType<{data: {Title: string}}>,
   contact: Contact as React.ComponentType<{data: {Title: string}}>,
+  services: Services as React.ComponentType<{data: {Title: string}}>,
 };
 export default async function Page({
   params,
@@ -85,7 +87,9 @@ export default async function Page({
 
   // Récupérer les données depuis Strapi pour le slug donné
   const pageData = await fetchPageContent(slug);
-  if (!pageData) {
+  console.log("Page Data:", pageData);
+  
+  if (!pageData) {    
     return <NotFoundPage />;
   }
 
