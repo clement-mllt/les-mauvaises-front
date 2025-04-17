@@ -19,11 +19,11 @@ export function HomeRestaurant() {
     flashScreen.classList.add("flash-screen");
     container.appendChild(flashScreen);
 
-    const currentColorIndex = localStorage.getItem("currentColorIndex");
-    const currentColor =
-      currentColorIndex !== null
-        ? (window as any).prepareAnimationHandler.colors[currentColorIndex]
-        : "#ffffff";
+    // const currentColorIndex = localStorage.getItem("currentColorIndex");
+    // const currentColor =
+    //   currentColorIndex !== null
+    //     ? (window as any).prepareAnimationHandler.colors[currentColorIndex]
+    //     : "#ffffff";
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -44,7 +44,7 @@ export function HomeRestaurant() {
     const loader = new GLTFLoader();
     loader.load(
       "/glbModels/building4.glb",
-      (gltf) => {
+      (gltf: any) => {
         const model = gltf.scene;
         scene.add(model);
 

@@ -8,7 +8,7 @@ export const HomeCuriosity = () => {
         <div className={`${style.texteCuriosity}`}>
             <p className={`${style.title} ${MadeSoulmaze.className}`}>la curiosité</p>
             <p className={`${style.subTitle} ${MadeSoulmaze.className}`}>est un vilain défaut</p>
-            <p className={`${style.text} ${Quicksand.className}`}>est ce que tu assume autant que nous ?</p>
+            <p className={`${style.text} ${Quicksand.className}`}>EST CE QUE TU L'ASSUME AUTANT QUE NOUS ?</p>
         </div>
         
         <div className={`${style.iconesCuriosity}`}>

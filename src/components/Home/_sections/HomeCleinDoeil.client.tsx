@@ -3,11 +3,12 @@ import style from "@/app/styles/components/Homepage.module.scss";
 
 import { AnimatedSection } from '../components/CleinDoeil/AnimatedSection.client';
 
-export const HomeCleinDoeil = () => {
+export const HomeCleinDoeil = (data: any) => {
   return (
-    <div className={`${style.homeCleinDoeil} navStop`}>
-        <AnimatedSection />
-            
-    </div>
+    <>
+      <div className={`${style.homeCleinDoeil} navStop`}>
+        <AnimatedSection  data={data}/>
+      </div>
+    </>
   )
 }

@@ -1,6 +1,7 @@
 // src/app/[slug]/page.tsx
 import {fetchPageContent} from "@/lib/strapi/page";
 import {Metadata} from "next";
+import NotFoundPage from "@/app/not-found";
 
 // Exporter la fonction generateMetadata pour générer des métadonnées dynamiques
 export async function generateMetadata({
@@ -85,7 +86,7 @@ export default async function Page({
   // Récupérer les données depuis Strapi pour le slug donné
   const pageData = await fetchPageContent(slug);
   if (!pageData) {
-    return <div>Page introuvable</div>;
+    return <NotFoundPage />;
   }
 
   // Sélectionner le composant en fonction du slug, ou utiliser le composant par défaut

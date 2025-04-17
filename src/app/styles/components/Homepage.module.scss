@@ -44,13 +44,280 @@
   background-color: $grey;
   color: white;
 
-  .texteCuriosity {
-    width: 100vw;
-    text-align: center;
-    line-height: 140px;
+    .homeCleinDoeil {
+        background-color: $grey;
+        height: 700vh;
+        width: 100vw;
+        display: flex;
+        justify-content: top;
+        align-items: center;
+        flex-direction: column;
+        overflow: hidden;
 
-    .title {
-      font-size: calc(9000vw / 1018);
+        .content {
+            height: 100vh;
+            width: 100vw;
+            background-color: $yellow;
+            overflow: hidden;
+
+            .papers {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                z-index: 2;
+
+                .paper1 {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 2;
+                }
+
+                .paper2 {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    z-index: 2;
+                    transform: rotate(180deg);
+                }
+            }
+
+            .cleinOeil {
+                position: absolute;
+                top: 100;
+                right: -50;
+                transform: rotate(-70deg) scale(0.8);
+                z-index: 1;
+                mix-blend-mode: darken;
+
+                .oeil1 {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+
+                .oeil2 {
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                }
+            }
+
+            .explosion {
+                position: absolute;
+                top: 200;
+                left: 140;
+                z-index: 3;
+                opacity: 0;
+
+                path {
+                    stroke: $yellow;
+                    stroke-width: 6px;
+                    stroke-linecap: square;
+                }
+
+            }
+
+            .ShortSVG {
+                position: absolute;
+                top: 200;
+                right: -40;
+                z-index: 5;
+            }
+
+            .longSVG {
+                border: 2px solid green;
+                width: 101vw;
+                height: 100vh;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 3;
+                mix-blend-mode: difference;
+            }
+
+            .splitText {
+                position: absolute;
+                top: 100;
+                left: 0;
+                z-index: 3;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                width: 100vw;
+                color: $yellow;
+                user-select: none;
+                mix-blend-mode: difference;
+
+                .splitText1 {
+                    display: flex;
+                    align-items: flex-end;
+                    gap: 20;
+                    line-height: 1;
+                    overflow: hidden;
+
+                    >span {
+                        margin: 0;
+                        padding: 0;
+                        letter-spacing: 0;
+                        line-height: 1;
+                        display: inline-flex;
+                    }
+
+                    >.span1 {
+                        font-size: calc(10000vw / 1018);
+                    }
+
+                    >.span2 {
+                        display: inline-block;
+                        font-size: calc(5000vw / 1018);
+                    }
+
+                    >.span3 {
+                        font-size: calc(9000vw / 1018);
+                    }
+
+                }
+
+
+
+                .splitText2 {
+                    display: flex;
+                    align-items: flex-end;
+                    line-height: 1;
+                    overflow: hidden;
+
+                    >span {
+                        margin: 0;
+                        padding: 0;
+                        letter-spacing: 0;
+                        line-height: 1;
+                        display: inline-flex;
+                    }
+
+                    >.span4 {
+                        font-size: calc(7000vw / 1018);
+                    }
+
+                }
+
+                .splitText3 {
+                    text-align: center;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    justify-content: center;
+                    overflow: hidden;
+
+                    .span5 {
+                        font-size: calc(6000vw / 1018);
+                        margin: 0;
+                        padding: 0;
+                        overflow: hidden;
+                    }
+
+                    .WordSmiley {
+                        display: flex;
+                        margin: 0;
+                        padding: 0;
+
+
+                        .span6 {
+                            display: flex;
+                            font-size: calc(10000vw / 1018);
+                            margin: 0;
+                            padding: 0;
+                            overflow: hidden;
+
+                            >div {
+                                line-height: calc(10000vw /1018);
+                            }
+                        }
+
+                        .span7 {
+                            margin: 0;
+                            padding: 0;
+                            display: flex;
+                            justify-content: flex-start;
+
+                            svg {
+                                display: block;
+                                margin: 0;
+                                padding: 0;
+                                width: 180px;
+                                height: 180px;
+                            }
+                        }
+
+                        .span8 {
+                            display: flex;
+                            font-size: calc(10000vw / 1018);
+                            margin: 0;
+                            padding: 0;
+                            overflow: hidden;
+
+                            >div {
+                                line-height: calc(10000vw /1018);
+                            }
+                        }
+                    }
+                }
+
+
+                img {
+                    position: absolute;
+                    top: 50%;
+                    right: 20%;
+                    height: 100;
+                    width: 100;
+                    opacity: 0;
+                    z-index: 100;
+                }
+            }
+
+            .containerTv {
+                position: relative;
+
+                .TvSection {
+                    position: relative;
+                    height: 100vh;
+                    width: 100vw;
+                    display: flex;
+                    justify-content: center;
+                    align-items: end;
+                    z-index: 10;
+                    background: transparent;
+                    
+                    img {
+                        position: absolute;
+                        height: 60%;
+                        width: auto;
+                        bottom: 0;
+                        z-index: 100;
+                    }
+
+                    .videoContainer {
+                        position: absolute;
+                        top: 48%;
+                        left: 41%;
+                        height: 21vh;
+                        width: 20vw;
+                        background-color: transparent;
+                        z-index: 115;
+                    }
+
+                    video {
+                        height: 100%;
+                        width: 110%;
+                    }
+
+                }
+            }
+        }
+
+
     }
 
     .subTitle {
@@ -83,20 +350,104 @@
   background-color: $grey;
   color: white;
 
-  .texteMotsCroise {
-    height: 100vh;
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    .title1 {
-      font-size: calc(6000vw / 1018);
+            .subTitle {
+                font-size: (5000vw / 1018);
+            }
+
+            .text {
+                font-size: calc(2000vw / 1018);
+            }
+        }
+
+        .iconesCuriosity {
+            display: flex;
+            justify-content: center;
+            gap: 10%;
+            width: 100vw;
+
+            img {
+                width: 150px;
+            }
+        }
     }
 
-    .title2 {
-      font-size: calc(12000vw / 1018);
+    .HomeMotsCroise {
+        height: 230vh;
+        width: 100vw;
+        display: flex;
+        justify-content: top;
+        align-items: top;
+        flex-direction: row;
+        background-color: $grey;
+        color: white;
+
+        .texteMotsCroise {
+            height: 100vh;
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            ;
+
+            .title1 {
+                font-size: calc(6000vw / 1018);
+            }
+
+            .title2 {
+                font-size: (12000vw / 1018);
+            }
+
+            .title3 {
+                font-size: calc(5000vw / 1018);
+            }
+
+            .title4 {
+                font-size: calc(6500vw / 1018);
+            }
+        }
+
+        .sectionMotCroise {
+            height: 100vh;
+            width: 55%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            .motCroise {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 2em 10em;
+
+                .row {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    align-items: center;
+                    line-height: 4em;
+                    gap: 2em;
+
+                }
+
+                .letter {
+                    display: inline-block;
+                    text-align: center;
+                    font-size: calc(2600vw / 1018);
+                    font-weight: bold;
+                    color: white;
+                    width: 100%;
+                    opacity: 0;
+                }
+
+                .letter.blank {
+                    text-align: center
+                }
+            }
+        }
     }
 
     .title3 {
@@ -115,9 +466,8 @@
         justify-content: space-between;
         width: 100%;
         align-items: center;
-        line-height: 4em;
-        gap: 2em;
-      }
+        background-color: $grey;
+        border: 2px solid blue;
 
       .letter {
         display: inline-block;
