@@ -1,0 +1,121 @@
+@use "../variables" as *;
+
+
+.servicesContainer {
+  width: 100vw;
+  height: auto;
+  color: $grey;
+
+  .servicesHeader {
+
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: end;
+    background-color: $yellow;
+    height: 90vh;
+    width: 100vw;
+
+
+    .servicesHeaderTitle {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      width: 60%;
+      padding-left: calc(5000vw / 1018);
+      padding-bottom: calc(5000vw / 1018);
+
+
+      >:nth-child(1) {
+        font-size: calc(2000vw / 1018);
+      }
+
+      >:nth-child(2) {
+        font-size: calc(8000vw / 1018);
+        line-height: 1;
+      }
+
+      >:nth-child(3) {
+        font-size: calc(1000vw / 1018);
+        margin-top: calc(1500vw / 1018);
+        ;
+      }
+    }
+
+    .servicesHeaderImage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: end;
+      padding-bottom: calc(5000vw / 1018);
+      height: 100%;
+      width: 40%;
+    }
+  }
+
+  .servicesVinyles {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;              // autorise le retour à la ligne
+    align-items: center;
+    justify-content: center;
+    background-color: $grey;
+  
+    .servicesVinylesPlace {
+      flex: 0 1 calc(50% - 2rem); // deux par ligne + gap
+      height: 50vh;
+      // border: 2px solid red;    // pour debug
+    }
+  }
+  
+
+  .servicesPlayerContainer {
+    display: flex;
+    flex-direction: row;
+    height: 70vh;
+    width: 100vw;
+    background-color: $yellow;
+
+    .playerContainerText {
+      height: 100%;
+      width: 50%;
+      font-size: calc(5000vw / 1018);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .playerContainerTitle {
+        width: 100%;
+        margin-left: calc(5000vw / 1018);
+      }
+      
+      .playerContainerSubTitle {
+        rotate: -5deg;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+
+
+        > :nth-child(1) {
+          font-size: calc(10000vw / 1018);
+        }
+        
+        > :nth-child(2) {
+        font-size: calc(7000vw / 1018);
+      }
+     }
+    }
+
+    .playerContainerModel {
+      height: 100%;
+      width: 50%;
+
+    }
+  }
+
+
+}
