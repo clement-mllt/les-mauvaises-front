@@ -14,8 +14,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    // Match all routes except /login
-    "/((?!api/|_next/|_static/|_vercel|signin|[\\w-]+\\.\\w+).*)",
-  ],
+  matcher: ["/"],
 };
